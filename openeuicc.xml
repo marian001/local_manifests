@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote name="angry" fetch="https://gitea.angry.im/PeterCxy" />
+  <project path="packages/apps/OpenEUICC" name="marian001/openeuicc" remote="github" sync-s="true" revision="23920bbe7193bcacf1b5f267cacf93ed1d0ee53e" />
+  <project path="prebuilts/openeuicc-deps" name="android_prebuilts_openeuicc-deps" remote="angry" revision="67a341e9cfbaed43da7e5a281f5cc7b8893fdc55" />
+</manifest>

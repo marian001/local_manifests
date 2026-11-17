@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote name="krazey" fetch="https://github.com/krazey" />
+
+  <!-- Open-source IMS stack (krazey, pinned: krazey force-pushes) -->
+  <project path="packages/modules/ImsStack" name="ImsStack" remote="krazey" revision="5ff784d265a94b8227f8fcc93bf915f7635283f0" />
+  <project path="packages/apps/CarrierSettings" name="CarrierSettings" remote="krazey" revision="2d00ce6100921547482bb3ecda690ec346d64be2" />
+
+  <!-- ImsMedia: krazey cb1dd74 + Macktherealonereally/ImsMedia#1 (uplink audio on MO calls) -->
+  <remove-project name="platform/packages/modules/ImsMedia" />
+  <project path="packages/modules/ImsMedia" name="marian001/ImsMedia" remote="github" revision="23b23413aecc05e9b0632930a91f683929d385e2" upstream="esim" />
+
+  <!-- Telephony: Gerrit 505200 (VoIP audio mode for IMS calls) -->
+  <remove-project name="LineageOS/android_packages_services_Telephony" />
+  <project path="packages/services/Telephony" name="marian001/android_packages_services_Telephony" remote="github" revision="b5fec296b6ec768abd4663fab66f5ba311eac083" upstream="esim" />
+
+  <!-- vendor/apn: IMS/XCAP APNs for SK operators -->
+  <remove-project name="LineageOS/android_vendor_apn" />
+  <project path="vendor/apn" name="marian001/android_vendor_apn" remote="github" revision="417a713310ee261ee8d2a9a7ac828295b078a7c4" upstream="esim" />
+</manifest>
