@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <project name="marian001/proprietary_vendor_samsung_universal2100-common" path="vendor/samsung/universal2100-common" revision="737a4dcd5607c1c25d1d70f969fdb8a984cd53dc" upstream="esim" remote="github"/>
-  <project name="marian001/android_device_samsung_universal2100-common" path="device/samsung/universal2100-common" revision="71a5787177e4e54215dce71e9d299d1edddc361c" upstream="esim" remote="github"/>
-  <project name="marian001/android_device_samsung_t2s" path="device/samsung/t2s" revision="f57bfc72c1171433bb525373675af0dd7b4572b4" upstream="esim" remote="github"/>
+  <project name="marian001/android_device_samsung_universal2100-common" path="device/samsung/universal2100-common" revision="41af0d50b3ca27ff846cd5625fe77ebaef3f4e8c" upstream="esim" remote="github"/>
+  <project name="marian001/android_device_samsung_t2s" path="device/samsung/t2s" revision="a7a6da82b3d47c223c754edcc9fa0f9456bbfe6a" upstream="esim" remote="github"/>
   <project name="LineageOS/android_hardware_samsung_slsi-linaro_graphics" path="hardware/samsung_slsi-linaro/graphics" revision="7434937774ed0515758acd5a8109b9dfb3898025" upstream="lineage-23.2" remote="github"/>
   <project name="exy2100/android_hardware_samsung_slsi-linaro_exynos" path="hardware/samsung_slsi-linaro/exynos" revision="031b49f4c83814590ad3107a99ec23dc156f1562" upstream="lineage-23.2" remote="github"/>
   <project name="LineageOS/android_hardware_samsung_slsi-linaro_config" path="hardware/samsung_slsi-linaro/config" revision="3626ce714e847cae429883a612d4ec9de79389e7" upstream="lineage-23.2" remote="github"/>
