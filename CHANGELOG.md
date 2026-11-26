@@ -3,17 +3,19 @@
 ## 2026-11-25 – lineage-23.2-20261125-UNOFFICIAL-t2s (signed)
 Bug-fix build, same keys as 20261116 / 20261118 (can be sideloaded over them without a wipe).
 
-**Not tested on a phone yet.** The causes below were found and confirmed on our phone running 20261118; the fixes were checked only in the built and signed package. Reports are welcome.
+**Tested on our phone on 2026-11-26** as an update over 20261118 (adb sideload, no wipe, SELinux enforcing, Magisk). Each fix below says what was seen. A clean install of this build was not tested.
 
 ### Fixed
-- **Fingerprint on the always-on display / with the screen off after a clean install:** SamsungBiometrics treated a never-touched "fingerprint unlock with the screen off" setting as off, while the system and Settings treat it as on. The touch panel was told to stop watching the sensor area at screen off, so nothing happened. On 20261118 it works once the setting is set explicitly (`adb shell settings put secure screen_off_udfps_enabled 1`); this build uses the same default as the system.
-- **Volume panel did not expand** (three dots in the volume slider): upstream LineageOS fix, `frameworks/base` moved to `1ef04f0354`.
-- **Phone never sleeps with always-on display on:** in the AOD power state the display driver holds a kernel wakeup source (`19f00000.decon_0`) all the time. Measured on 20261118: held 97 % of 6.5 days of uptime. The driver is not changed; always-on display is now **off by default**. You can still turn it on in Settings, at the cost of battery.
-- **sysinput HAL:** added the three missing SELinux rules (`input_device` write, `/mnt/vendor` and `/efs` search).
+- **Fingerprint on the always-on display / with the screen off after a clean install:** SamsungBiometrics treated a never-touched "fingerprint unlock with the screen off" setting as off, while the system and Settings treat it as on. The touch panel was told to stop watching the sensor area at screen off, so nothing happened. On 20261118 it works once the setting is set explicitly (`adb shell settings put secure screen_off_udfps_enabled 1`); this build uses the same default as the system. Tested: with the setting never set, the phone unlocks from the always-on display and from a dark screen with always-on display off.
+- **Volume panel did not expand** (three dots in the volume slider): upstream LineageOS fix, `frameworks/base` moved to `1ef04f0354`. Tested: the panel expands and stays open on the unlocked phone; on the lock screen it does not expand.
+- **Phone never sleeps with always-on display on:** in the AOD power state the display driver holds a kernel wakeup source (`19f00000.decon_0`) all the time. Measured on 20261118: held 97 % of 6.5 days of uptime. The driver is not changed; always-on display is now **off by default**. You can still turn it on in Settings, at the cost of battery. Tested: with the switch never set, the display is fully off when the phone is locked.
+- **sysinput HAL:** added the three missing SELinux rules (`input_device` write, `/mnt/vendor` and `/efs` search). Tested: those three denials are gone. One new denial shows up at boot instead (the HAL is refused read/write on the file `taaslog` in `/efs`); fingerprint works with it.
 
 ### Notes
+- Also checked after the update: fingerprint unlock with the screen on, 39 sensors, adaptive brightness, LTE data over eSIM, Wi-Fi, data kept, the Magisk-patched boot from 20261118 reused.
+- Not tested: a clean install of this build, and idle drain on this build (the numbers below are from 20261118).
 - Updating: if you never touched the always-on display switch, it will be off after the update. If you set it yourself, your choice is kept.
-- Battery: idle drain is still higher than it should be even with always-on display off (our phone: about 3.9 %/h with Wi-Fi + LTE, about 2.0 %/h in airplane mode, awake about 70 % of the time). Seen in the logs: the NFC chip wakes the phone every 11-14 s even with nothing near it, GNSS and failed suspend attempts. Cause not found yet. Turning NFC off when you do not need it may help (not measured).
+- Battery: idle drain is still higher than it should be even with always-on display off (our phone on 20261118: about 3.9 %/h with Wi-Fi + LTE, about 2.0 %/h in airplane mode, awake about 70 % of the time). Seen in the logs: the NFC chip wakes the phone every 11-14 s even with nothing near it, GNSS and failed suspend attempts. Cause not found yet. Turning NFC off when you do not need it may help (not measured).
 - A tap on the always-on display does not wake the screen (not investigated).
 - `boot.img`, `vendor_boot.img` and `dtbo.img` are byte-identical to 20261118 (a Magisk-patched boot can be reused). `recovery.img` and `vbmeta.img` are rebuilt.
 - Everything else as in 20261118 below.
