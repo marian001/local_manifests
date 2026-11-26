@@ -14,6 +14,10 @@ Local manifests and release notes for an **unofficial** LineageOS 23.2 (Android 
   - open-source IMS stack (VoLTE) with a CarrierConfig RRO for Slovak operators
   - sensors: the multihal loads `sensors.sensorhub` through `sensors.sensorhub_wait_for_mcu`, so it waits for the sensor hub MCU (light, proximity, accelerometer, gyroscope and compass were missing; adaptive brightness did not work)
   - fingerprint: SELinux policy for the Samsung sysinput HAL (`sec-sysinput-aidl` could not start) and `ro.vendor.fingerprint.request_touch_event=false` (enrollment failed at the first touch)
+  - always-on display is off by default (it stays available in Settings): with it on, the display driver holds a wakeup source and the phone never suspends
+  - sysinput HAL: three more SELinux rules (`input_device` write, `/mnt/vendor` and `/efs` search)
+- `hardware/samsung`: fork of exy2100 (branch `esim`) with one commit: SamsungBiometrics uses the framework default for "fingerprint unlock with the screen off" (it treated a never-touched setting as off, so the fingerprint did nothing on the always-on display / with the screen off after a clean install)
+- `frameworks/base` pinned to LineageOS `1ef04f0354` (upstream fix: the expanded volume panel did not open)
 - `device/lineage/sepolicy` from exy2100 (labels `IWirelessFastCharge`; without it the build bootloops)
 - `packages/apps/OpenEUICC`: fork with BPP 255-byte segments (#359 port) and a menu item to switch SIM 2 between the tray and the built-in eSIM
 - `packages/modules/ImsMedia`, `packages/services/Telephony`: VoLTE uplink audio fixes (krazey/ImsMedia + Mack's PR, LineageOS Gerrit 505200)
@@ -42,12 +46,12 @@ Tested on stock base firmware **G996BXXSJHZC2** (One UI 7 / Android 15).
 1. Unlock the bootloader (wipes the phone and trips Knox permanently).
 2. Download mode: flash `lineage_recovery-signed.tar` (contains `recovery.img` + `vbmeta.img`) with Odin/odin4 in the AP slot.
 3. Boot to recovery: Factory reset -> **Format data**.
-4. Apply update -> Apply from ADB: `adb sideload lineage-23.2-20261118-UNOFFICIAL-t2s-signed.zip`.
+4. Apply update -> Apply from ADB: `adb sideload lineage-23.2-20261125-UNOFFICIAL-t2s-signed.zip`.
 5. Reboot.
 
 Coming from any other build (including test-keys builds) requires **Format data**: the signing keys differ.
 
-Updating from our `20261116` signed build: reboot to recovery, Apply update -> Apply from ADB, sideload the new zip. No wipe needed (same keys). Enrolled fingerprints are gone after the update; add them again.
+Updating from our `20261116` or `20261118` signed build: reboot to recovery, Apply update -> Apply from ADB, sideload the new zip. No wipe needed (same keys). Coming from `20261116`, enrolled fingerprints are gone after the update; add them again.
 
 ## Signing keys
 - Build type `userdebug`, `release-keys` (adb root is off by default).

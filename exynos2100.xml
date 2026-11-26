@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
   <project name="marian001/proprietary_vendor_samsung_universal2100-common" path="vendor/samsung/universal2100-common" revision="737a4dcd5607c1c25d1d70f969fdb8a984cd53dc" upstream="esim" remote="github"/>
-  <project name="marian001/android_device_samsung_universal2100-common" path="device/samsung/universal2100-common" revision="41af0d50b3ca27ff846cd5625fe77ebaef3f4e8c" upstream="esim" remote="github"/>
+  <project name="marian001/android_device_samsung_universal2100-common" path="device/samsung/universal2100-common" revision="a9ed610e014611bbb549b177004dac54dd5e321c" upstream="esim" remote="github"/>
   <project name="marian001/android_device_samsung_t2s" path="device/samsung/t2s" revision="a7a6da82b3d47c223c754edcc9fa0f9456bbfe6a" upstream="esim" remote="github"/>
   <project name="LineageOS/android_hardware_samsung_slsi-linaro_graphics" path="hardware/samsung_slsi-linaro/graphics" revision="7434937774ed0515758acd5a8109b9dfb3898025" upstream="lineage-23.2" remote="github"/>
   <project name="exy2100/android_hardware_samsung_slsi-linaro_exynos" path="hardware/samsung_slsi-linaro/exynos" revision="031b49f4c83814590ad3107a99ec23dc156f1562" upstream="lineage-23.2" remote="github"/>
@@ -11,7 +11,7 @@
   <project name="LineageOS/android_hardware_samsung_slsi-linaro_codec2" path="hardware/samsung_slsi-linaro/codec2" revision="11c7da92a458d6e50e8e95c40d90fd2ec475b3d5" upstream="lineage-23.2" remote="github"/>
   <project name="Pandaispro/android_kernel_samsung_universal2100" path="kernel/samsung/universal2100" revision="dce077ec2b5a9990a3de6016a77a25637aab9f2c" upstream="lineage-23.2" remote="github"/>
   <project name="LineageOS/android_hardware_samsung_slsi-linaro_interfaces" path="hardware/samsung_slsi-linaro/interfaces" revision="a23ed82b3f3859aa9e0207036b0d0e98119b959b" upstream="lineage-23.2" remote="github"/>
-  <project name="exy2100/android_hardware_samsung" path="hardware/samsung" revision="94174bf7c798492408bd51b918193d97461e7540" upstream="lineage-23.2" remote="github"/>
+  <project name="marian001/android_hardware_samsung" path="hardware/samsung" revision="a43b26cce1b680dae653c2eb8684fd33e8c1be87" upstream="esim" remote="github"/>
   <remove-project name="LineageOS/android_hardware_lineage_interfaces"/>
   <project name="exy2100/android_hardware_lineage_interfaces" path="hardware/lineage/interfaces" revision="232581d7a904696cea4dfe3f8c65709d630c2996" upstream="lineage-23.2" remote="github"/>
   <remove-project name="LineageOS/android_device_lineage_sepolicy"/>
@@ -19,4 +19,6 @@
   <project name="exy2100/android_device_samsung_slsi_sepolicy" path="device/samsung_slsi/sepolicy" revision="129e8c7acfad9ec9e04ed27b886a923f888a19ab" upstream="lineage-23.2" remote="github"/>
   <project name="Pandaispro/proprietary_vendor_samsung_t2s" path="vendor/samsung/t2s" revision="e89587289de72b4eab0e1537a7dcc5b9fe3b6615" upstream="lineage-23.2" remote="github"/>
   <project name="LineageOS/android_hardware_nxp_uwb" path="hardware/nxp/uwb" revision="5e03f44c0a88bd685c14f8259e06083a0d28ab8f" upstream="lineage-23.2" remote="github"/>
+  <remove-project name="LineageOS/android_frameworks_base"/>
+  <project name="LineageOS/android_frameworks_base" path="frameworks/base" revision="1ef04f03546366e85f414b6ca5306305d18aa1ef" upstream="lineage-23.2" remote="github" groups="pdk-cw-fs,pdk-fs,sysui-studio"/>
 </manifest>
